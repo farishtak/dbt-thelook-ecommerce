@@ -150,7 +150,7 @@ This model:
 
 
 
-!\[fact\_thelook\_order\_items lineage graph showing source to fact table](dbt-thelook-ecommerce/images/lineage\_graph.png)
+!\[fact\_thelook\_order\_items lineage graph showing source to fact table](images/lineage_graph.png)
 
 
 
