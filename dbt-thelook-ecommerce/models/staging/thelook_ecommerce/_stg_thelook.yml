@@ -1,0 +1,37 @@
+# YML file containing a series of tests on thelook staging tables including checking for unique/not null primary key, not null fk,
+# and accepted values are in range for certain columns
+
+version: 2
+models:
+  - name: stg_thelook_orders
+    columns:
+      - name: order_id
+        tests: [not_null, unique]
+      - name: customer_id
+        tests: [not_null]
+      - name: order_status
+        tests:
+          - accepted_values:
+              values: ['Cancelled','Complete','Processing','Returned','Shipped']
+  - name: stg_thelook_orderitems
+    columns:
+      - name: order_items_id
+        tests: [not_null, unique]
+      - name: customer_id
+        tests: [not_null]
+      - name: order_id
+        tests:
+          - not_null
+      - name: product_id
+        tests: [not_null]
+      - name: order_status
+        tests:
+          - accepted_values:
+              values: ['Cancelled','Complete','Processing','Returned','Shipped']
+  - name: stg_thelook_products
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
+      - name: distribution_center_id
+        tests: [not_null]
+

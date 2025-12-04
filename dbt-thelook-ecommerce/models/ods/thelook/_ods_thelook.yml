@@ -1,0 +1,31 @@
+# YML file containing a series of tests on thelook ods tables including checking for unique/not null primary key, not null fk,
+# and relationship integrity to foreign key of related tables
+version: 2
+models:
+  - name: ods_thelook_orders
+    columns:
+      - name: order_id
+        tests: [not_null, unique]
+      - name: customer_id
+        tests: [not_null]
+  - name: ods_thelook_orderitems
+    columns:
+      - name: order_items_id
+        tests: [not_null, unique]
+      - name: customer_id
+        tests: [not_null]
+      - name: order_id
+        tests:
+          - not_null
+      - name: product_id
+        tests: 
+          - not_null
+          - relationships:
+              to: ref('ods_thelook_products') # Reference to the parent table
+              field: product_id # Primary key in the parent table
+  - name: ods_thelook_products
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
+      - name: distribution_center_id
+        tests: [not_null]
