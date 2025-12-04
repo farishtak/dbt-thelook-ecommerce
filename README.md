@@ -150,7 +150,8 @@ This model:
 
 
 
-!\[fact\_thelook\_order\_items lineage graph showing source to fact table](images/lineage_graph.png)
+![fact_thelook_order_items lineage graph showing source to fact table](./images/lineage_graph.png)
+
 
 
 
